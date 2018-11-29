@@ -19,6 +19,24 @@ public class Barang {
         this.namaBarang = namaBarang;
         this.harga = harga;
     }
+
+    public String getNamaBarang() {
+        return namaBarang;
+    }
+
+    public void setNamaBarang(String namaBarang) {
+        this.namaBarang = namaBarang;
+    }
+
+    public double getHarga() {
+        return harga;
+    }
+
+    public void setHarga(double harga) {
+        this.harga = harga;
+    }
+    
+    
     
     
     

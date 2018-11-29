@@ -10,12 +10,25 @@ package com.khoirularifin.quiz2;
  * @author KINTUL
  */
 public class PenjualanFrame extends javax.swing.JFrame {
+    Barang barang;
+    
 
     /**
      * Creates new form PenjualanFrame
      */
     public PenjualanFrame() {
         initComponents();
+        isiComboBarang();
+    }
+    
+    private void isiComboBarang(){
+        Barang brg1 = new Barang("Susu", 12000);
+        Barang brg2 = new Barang("Gula", 10000);
+        Barang brg3 = new Barang("Kopi", 14000);
+        
+        barangComboBox.addItem(brg1);
+        barangComboBox.addItem(brg2);
+        barangComboBox.addItem(brg3);
     }
 
     /**
@@ -30,7 +43,7 @@ public class PenjualanFrame extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         codeText = new javax.swing.JTextField();
-        barangComboBox = new javax.swing.JComboBox<>();
+        barangComboBox = new javax.swing.JComboBox();
         newButton = new javax.swing.JButton();
         addButton = new javax.swing.JButton();
         removeButton = new javax.swing.JButton();
@@ -52,7 +65,7 @@ public class PenjualanFrame extends javax.swing.JFrame {
             }
         });
 
-        barangComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Susu", "Gula", "Kopi" }));
+        barangComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Susu", "Gula", "Kopi" }));
         barangComboBox.setSelectedIndex(-1);
         barangComboBox.setToolTipText("");
         barangComboBox.addActionListener(new java.awt.event.ActionListener() {
@@ -158,7 +171,7 @@ public class PenjualanFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_addButtonActionPerformed
 
     private void barangComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_barangComboBoxActionPerformed
-        // TODO add your handling code here:
+        barang = (Barang)barangComboBox.getSelectedItem();
     }//GEN-LAST:event_barangComboBoxActionPerformed
 
     /**
@@ -198,7 +211,7 @@ public class PenjualanFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addButton;
-    private javax.swing.JComboBox<String> barangComboBox;
+    private javax.swing.JComboBox barangComboBox;
     private javax.swing.JTable barangTable;
     private javax.swing.JButton cancelButton;
     private javax.swing.JTextField codeText;

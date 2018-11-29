@@ -55,6 +55,11 @@ public class PenjualanFrame extends javax.swing.JFrame {
         barangComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Susu", "Gula", "Kopi" }));
         barangComboBox.setSelectedIndex(-1);
         barangComboBox.setToolTipText("");
+        barangComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                barangComboBoxActionPerformed(evt);
+            }
+        });
 
         newButton.setText("New");
 
@@ -151,6 +156,10 @@ public class PenjualanFrame extends javax.swing.JFrame {
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_addButtonActionPerformed
+
+    private void barangComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_barangComboBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_barangComboBoxActionPerformed
 
     /**
      * @param args the command line arguments

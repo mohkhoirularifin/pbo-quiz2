@@ -17,14 +17,14 @@ public class Transaksi {
     private DefaultTableModel tabel = new DefaultTableModel();
     
     public Transaksi(){
-        getTabel().addColumn("Nama");
-        getTabel().addColumn("Harga");
-        getTabel().addColumn("Jumlah");
+        getTable().addColumn("Nama");
+        getTable().addColumn("Harga");
+        getTable().addColumn("Jumlah");
     }
     
     public double countTotal(){
         total=0;
-        for (int i = 0; i < tabel.getColumnCount(); i++) {
+        for (int i = 0; i < tabel.getRowCount(); i++) {
             total = total + Double.parseDouble(tabel.getValueAt(i, 1).toString()) * Double.parseDouble(tabel.getValueAt(i, 2).toString());
         }
         return total;
@@ -33,10 +33,13 @@ public class Transaksi {
     public String detailBarang(){
         String detailBarang = "";
         for (int i = 0; i < tabel.getRowCount(); i++) {
-            detailBarang += tabel.getValueAt(i, 0).toString() + " " + tabel.getValueAt(i, 2).toString() +
-                    " " + (Double.parseDouble(tabel.getValueAt(i, 1).toString()) * Double.parseDouble(tabel.getValueAt(i, 2).toString())) + "\n";
+            detailBarang += tabel.getValueAt(i, 0).toString() + " " + tabel.getValueAt(i, 2).toString() + " " + (Double.parseDouble(tabel.getValueAt(i, 1).toString()) * Double.parseDouble(tabel.getValueAt(i, 2).toString())) + "\n";
         }
         return detailBarang;
+    }
+
+    public int getTableRow(){
+        return tabel.getRowCount();
     }
 
     public double getTotal() {
@@ -46,8 +49,16 @@ public class Transaksi {
     public void setTotal(double total) {
         this.total = total;
     }
+
+    public double getDetailBaran() {
+        return detailBaran;
+    }
+
+    public void setDetailBaran(double detailBaran) {
+        this.detailBaran = detailBaran;
+    }
     
-    public DefaultTableModel getTabel(){
+    public DefaultTableModel getTable(){
         return tabel;
     }
 

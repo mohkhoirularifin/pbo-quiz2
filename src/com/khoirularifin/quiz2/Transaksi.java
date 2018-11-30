@@ -13,6 +13,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class Transaksi {
     private double total=0;
+    private double detailBaran;
     private DefaultTableModel tabel = new DefaultTableModel();
     
     public Transaksi(){

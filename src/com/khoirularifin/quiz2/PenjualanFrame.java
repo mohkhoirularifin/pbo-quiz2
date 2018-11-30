@@ -65,7 +65,6 @@ public class PenjualanFrame extends javax.swing.JFrame {
             }
         });
 
-        barangComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Susu", "Gula", "Kopi" }));
         barangComboBox.setSelectedIndex(-1);
         barangComboBox.setToolTipText("");
         barangComboBox.addActionListener(new java.awt.event.ActionListener() {

@@ -12,17 +12,20 @@ import javax.swing.table.DefaultTableModel;
  * @author KINTUL
  */
 public class Transaksi {
+    // Menambahkan Attribute
     private double total=0;
     private double detailBaran;
     private DefaultTableModel tabel = new DefaultTableModel();
     
     public Transaksi(){
+        // Menambahkan nama kolom
         getTable().addColumn("Nama");
         getTable().addColumn("Harga");
         getTable().addColumn("Jumlah");
     }
     
     public double countTotal(){
+        // menghitung total harga
         total=0;
         for (int i = 0; i < tabel.getRowCount(); i++) {
             total = total + Double.parseDouble(tabel.getValueAt(i, 1).toString()) * Double.parseDouble(tabel.getValueAt(i, 2).toString());
@@ -31,13 +34,14 @@ public class Transaksi {
     }
     
     public String detailBarang(){
+        // code untuk menampilkan detailBarang yang dipanggil saat menyimpan transaksi
         String detailBarang = "";
         for (int i = 0; i < tabel.getRowCount(); i++) {
             detailBarang += tabel.getValueAt(i, 0).toString() + " " + tabel.getValueAt(i, 2).toString() + " " + (Double.parseDouble(tabel.getValueAt(i, 1).toString()) * Double.parseDouble(tabel.getValueAt(i, 2).toString())) + "\n";
         }
         return detailBarang;
     }
-
+    // menambahkan getter d an setter
     public int getTableRow(){
         return tabel.getRowCount();
     }

@@ -5,6 +5,7 @@
  */
 package com.khoirularifin.quiz2;
 
+// Menambahkan import yang diperlukan
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -16,6 +17,7 @@ import javax.swing.table.DefaultTableModel;
  * @author KINTUL
  */
 public class PenjualanFrame extends javax.swing.JFrame {
+    // Attribute Class Frame
     Barang barang;
     int code;
     DateFormat dateFormat;
@@ -30,6 +32,7 @@ public class PenjualanFrame extends javax.swing.JFrame {
         initComponents();
         isiComboBarang();
         barangTable.setModel(penjualan.getTable());
+        // setEnable untuk mengatur enable disable 
         barangComboBox.setEnabled(false);
         addButton.setEnabled(false);
         jumlahText.setEnabled(false);
@@ -39,6 +42,7 @@ public class PenjualanFrame extends javax.swing.JFrame {
     }
     
     private void isiComboBarang(){
+        // isi dari combo box
         Barang brg1 = new Barang("Susu", 12000);
         Barang brg2 = new Barang("Gula", 10000);
         Barang brg3 = new Barang("Kopi", 14000);
@@ -202,6 +206,7 @@ public class PenjualanFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_codeTextActionPerformed
 
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
+        // Code untuk menambahkan item yang dibeli
         String[] data = new String[3];
         double harga;
         int qty = 0, jumlah = 0;
@@ -213,6 +218,8 @@ public class PenjualanFrame extends javax.swing.JFrame {
         jumlah = qty;
         data[2] = String.valueOf(jumlah);
 //        penjualan.getTable().addRow(data);
+        // ppengecekan apakah ada item yang sama
+        // jika ada maka tinggal menambahkan pada item yang sudah ada
         int tableRow = penjualan.getTableRow();
         if (tableRow == 0) {
             penjualan.getTable().addRow(new Object[]{barang.getNamaBarang(), barang.getHarga(), jumlah});
@@ -234,17 +241,24 @@ public class PenjualanFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_addButtonActionPerformed
 
     private void barangComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_barangComboBoxActionPerformed
+        // Code untuk memilih item pada combobox
         barang = (Barang)barangComboBox.getSelectedItem();
     }//GEN-LAST:event_barangComboBoxActionPerformed
 
     private void newButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newButtonActionPerformed
+        // Code untuk menambahkan code
         code++;
+        // Code agar mendapatkan tanggal saat terjadinya transaksi
         DateFormat dateFormat = new SimpleDateFormat("yyMMdd");
         Date date = new Date();
         System.out.println(dateFormat.format(date));
+        // Code agar mendapatkan nomer urut 2 digit diawali angka 0,
+        // dan jika bertemu angka 10 maka tidak ada 0 di depan
         codeText.setText(dateFormat.format(date) + String.format("%02d", code));
+        // Code untuk mendisable item yang sudah dipilih
         codeText.setEnabled(false);
         newButton.setEnabled(false);
+        // Code untuk meng-enable item yang akan dipilih
         barangComboBox.setEnabled(true);
         addButton.setEnabled(true);
         jumlahText.setEnabled(true);  
@@ -255,10 +269,12 @@ public class PenjualanFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_newButtonActionPerformed
 
     private void removeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeButtonActionPerformed
+        // Code untuk menghapus item yang dipilih
         penjualan.getTable().removeRow(barangTable.getSelectedRow());
     }//GEN-LAST:event_removeButtonActionPerformed
 
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
+        // Code untuk menyimpan transaksi dan menampilkannya
         DateFormat dateFormat = new SimpleDateFormat("yyMMdd");
         Date date = new Date();
         System.out.println(dateFormat.format(date));
@@ -275,6 +291,7 @@ public class PenjualanFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_saveButtonActionPerformed
 
     private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
+        // Code untuk membatalkan transaksi dan mengkosongkan frame
         new PenjualanFrame().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_cancelButtonActionPerformed

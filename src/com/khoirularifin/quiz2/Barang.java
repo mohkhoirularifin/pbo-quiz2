@@ -19,7 +19,7 @@ public class Barang {
         this.namaBarang = namaBarang;
         this.harga = harga;
     }
-
+    // Menambahkan Getter dan Setter
     public String getNamaBarang() {
         return namaBarang;
     }
@@ -35,7 +35,7 @@ public class Barang {
     public void setHarga(double harga) {
         this.harga = harga;
     }
-
+    // Membuat toString
     @Override
     public String toString() {
         return this.namaBarang;

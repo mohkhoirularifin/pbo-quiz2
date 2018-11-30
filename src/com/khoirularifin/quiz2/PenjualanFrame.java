@@ -5,6 +5,10 @@
  */
 package com.khoirularifin.quiz2;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 /**
  *
  * @author KINTUL
@@ -12,6 +16,8 @@ package com.khoirularifin.quiz2;
 public class PenjualanFrame extends javax.swing.JFrame {
     Barang barang;
     Transaksi penjualan = new Transaksi();
+    int code;
+    Date date;
     
 
     /**
@@ -75,6 +81,11 @@ public class PenjualanFrame extends javax.swing.JFrame {
         });
 
         newButton.setText("New");
+        newButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                newButtonActionPerformed(evt);
+            }
+        });
 
         addButton.setText("Add");
         addButton.addActionListener(new java.awt.event.ActionListener() {
@@ -185,6 +196,14 @@ public class PenjualanFrame extends javax.swing.JFrame {
     private void barangComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_barangComboBoxActionPerformed
         barang = (Barang)barangComboBox.getSelectedItem();
     }//GEN-LAST:event_barangComboBoxActionPerformed
+
+    private void newButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newButtonActionPerformed
+        code++;
+        DateFormat dateFormat = new SimpleDateFormat("yyMMdd");
+        Date date = new Date();
+        System.out.println(dateFormat.format(date));
+        codeText.setText(dateFormat.format(date) + String.format("%02d", code));
+    }//GEN-LAST:event_newButtonActionPerformed
 
     /**
      * @param args the command line arguments

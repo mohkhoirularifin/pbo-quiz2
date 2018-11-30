@@ -25,7 +25,7 @@ public class Transaksi {
     public double countTotal(){
         total=0;
         for (int i = 0; i < tabel.getColumnCount(); i++) {
-            total = total + Double.parseDouble(tabel.getValueAt(i, 2).toString());
+            total = total + Double.parseDouble(tabel.getValueAt(i, 1).toString()) * Double.parseDouble(tabel.getValueAt(i, 2).toString());
         }
         return total;
     }

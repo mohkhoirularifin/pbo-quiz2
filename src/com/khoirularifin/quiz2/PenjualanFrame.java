@@ -9,6 +9,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -16,18 +17,25 @@ import javax.swing.JOptionPane;
  */
 public class PenjualanFrame extends javax.swing.JFrame {
     Barang barang;
-    Transaksi penjualan = new Transaksi();
     int code;
+    DateFormat dateFormat;
     Date date;
-    
-
+    Transaksi penjualan = new Transaksi();
+    boolean enable = true;
+    DefaultTableModel tabel = new DefaultTableModel();
     /**
      * Creates new form PenjualanFrame
      */
     public PenjualanFrame() {
         initComponents();
         isiComboBarang();
-        barangTable.setModel(penjualan.getTabel());
+        barangTable.setModel(penjualan.getTable());
+        barangComboBox.setEnabled(false);
+        addButton.setEnabled(false);
+        jumlahText.setEnabled(false);
+        removeButton.setEnabled(false);
+        saveButton.setEnabled(false);
+        cancelButton.setEnabled(false);
     }
     
     private void isiComboBarang(){
@@ -204,8 +212,7 @@ public class PenjualanFrame extends javax.swing.JFrame {
         qty = Integer.parseInt(jumlahText.getText());
         jumlah = qty;
         data[2] = String.valueOf(jumlah);
-        
-        penjualan.getTabel().addRow(data);
+        penjualan.getTable().addRow(data);
         
     }//GEN-LAST:event_addButtonActionPerformed
 
@@ -219,10 +226,19 @@ public class PenjualanFrame extends javax.swing.JFrame {
         Date date = new Date();
         System.out.println(dateFormat.format(date));
         codeText.setText(dateFormat.format(date) + String.format("%02d", code));
+        codeText.setEnabled(false);
+        newButton.setEnabled(false);
+        barangComboBox.setEnabled(true);
+        addButton.setEnabled(true);
+        jumlahText.setEnabled(true);  
+        removeButton.setEnabled(true);
+        saveButton.setEnabled(true);
+        cancelButton.setEnabled(true);
+        
     }//GEN-LAST:event_newButtonActionPerformed
 
     private void removeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeButtonActionPerformed
-        penjualan.getTabel().removeRow(barangTable.getSelectedRow());
+        penjualan.getTable().removeRow(barangTable.getSelectedRow());
     }//GEN-LAST:event_removeButtonActionPerformed
 
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
@@ -237,7 +253,8 @@ public class PenjualanFrame extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, sb, "Detail Transaksi", JOptionPane.INFORMATION_MESSAGE);
         code++;
         jumlahText.setText("");
-        penjualan.getTabel().setRowCount(0);
+        penjualan.getTable().setRowCount(0);
+        
     }//GEN-LAST:event_saveButtonActionPerformed
 
     private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed

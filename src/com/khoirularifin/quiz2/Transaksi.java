@@ -18,7 +18,7 @@ public class Transaksi {
     public Transaksi(){
         getTabel().addColumn("Nama");
         getTabel().addColumn("Harga");
-        getTabel().addColumn(Jumlah);
+        getTabel().addColumn("Jumlah");
     }
     
     public double countTotal(){

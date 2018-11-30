@@ -28,6 +28,15 @@ public class Transaksi {
         }
         return total;
     }
+    
+    public String detailBarang(){
+        String detailBarang = "";
+        for (int i = 0; i < tabel.getRowCount(); i++) {
+            detailBarang += tabel.getValueAt(i, 0).toString() + " " + tabel.getValueAt(i, 2).toString() +
+                    " " + (Double.parseDouble(tabel.getValueAt(i, 1).toString()) * Double.parseDouble(tabel.getValueAt(i, 2).toString())) + "\n";
+        }
+        return detailBarang;
+    }
 
     public double getTotal() {
         return total;

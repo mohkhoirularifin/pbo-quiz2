@@ -40,4 +40,8 @@ public class Transaksi {
     public DefaultTableModel getTabel(){
         return tabel;
     }
+
+    public void setTabel(DefaultTableModel tabel) {
+        this.tabel = tabel;
+    }
 }

@@ -28,6 +28,14 @@ public class Transaksi {
         }
         return total;
     }
+
+    public double getTotal() {
+        return total;
+    }
+
+    public void setTotal(double total) {
+        this.total = total;
+    }
     
     public DefaultTableModel getTabel(){
         return tabel;

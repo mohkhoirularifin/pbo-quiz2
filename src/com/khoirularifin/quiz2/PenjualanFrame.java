@@ -8,6 +8,7 @@ package com.khoirularifin.quiz2;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -115,6 +116,11 @@ public class PenjualanFrame extends javax.swing.JFrame {
         jScrollPane1.setViewportView(barangTable);
 
         saveButton.setText("Save");
+        saveButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveButtonActionPerformed(evt);
+            }
+        });
 
         cancelButton.setText("Cancel");
 
@@ -213,6 +219,21 @@ public class PenjualanFrame extends javax.swing.JFrame {
     private void removeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeButtonActionPerformed
         penjualan.getTabel().removeRow(barangTable.getSelectedRow());
     }//GEN-LAST:event_removeButtonActionPerformed
+
+    private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
+        DateFormat dateFormat = new SimpleDateFormat("yyMMdd");
+        Date date = new Date();
+        System.out.println(dateFormat.format(date));
+        codeText.setText(dateFormat.format(date) + String.format("%02d", code));
+        StringBuilder sb = new StringBuilder();
+        sb.append("Kode: ").append(codeText.getText()).append("\n");
+        sb.append("Detail Belanja: \n").append(penjualan.detailBarang());
+        sb.append("Total: ").append(penjualan.countTotal()).append("\n");
+        JOptionPane.showMessageDialog(this, sb, "Detail Transaksi", JOptionPane.INFORMATION_MESSAGE);
+        code++;
+        jumlahText.setText("");
+        penjualan.getTabel().setRowCount(0);
+    }//GEN-LAST:event_saveButtonActionPerformed
 
     /**
      * @param args the command line arguments

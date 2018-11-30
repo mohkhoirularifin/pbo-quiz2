@@ -212,7 +212,24 @@ public class PenjualanFrame extends javax.swing.JFrame {
         qty = Integer.parseInt(jumlahText.getText());
         jumlah = qty;
         data[2] = String.valueOf(jumlah);
-        penjualan.getTable().addRow(data);
+//        penjualan.getTable().addRow(data);
+        int tableRow = penjualan.getTableRow();
+        if (tableRow == 0) {
+            penjualan.getTable().addRow(new Object[]{barang.getNamaBarang(), barang.getHarga(), jumlah});
+        } else {
+            for (int i = 0; i < tableRow; i++) {
+                if (penjualan.getTable().getValueAt(i, 0).toString().equals(barang.getNamaBarang())) {
+                    penjualan.getTable().setValueAt(Integer.parseInt(penjualan.getTable().getValueAt(i, 2).toString()) + Integer.parseInt(jumlahText.getText()), i, 2);
+                    break;
+                } else {
+                    if (!penjualan.getTable().getValueAt(tableRow - 1, 0).toString().equals(barang.getNamaBarang()) && (i == tableRow - 1)) {
+                        penjualan.getTable().addRow(new Object[]{barang.getNamaBarang(), barang.getHarga(), jumlahText.getText()});
+                        break;
+                    }
+                }
+            }
+        }
+        barangComboBox.requestFocus();
         
     }//GEN-LAST:event_addButtonActionPerformed
 

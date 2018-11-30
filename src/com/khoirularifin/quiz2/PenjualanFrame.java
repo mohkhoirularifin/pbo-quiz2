@@ -11,6 +11,7 @@ package com.khoirularifin.quiz2;
  */
 public class PenjualanFrame extends javax.swing.JFrame {
     Barang barang;
+    Transaksi penjualan = new Transaksi();
     
 
     /**
@@ -19,6 +20,7 @@ public class PenjualanFrame extends javax.swing.JFrame {
     public PenjualanFrame() {
         initComponents();
         isiComboBarang();
+        barangTable.setModel(penjualan.getTabel());
     }
     
     private void isiComboBarang(){
@@ -65,7 +67,6 @@ public class PenjualanFrame extends javax.swing.JFrame {
             }
         });
 
-        barangComboBox.setSelectedIndex(-1);
         barangComboBox.setToolTipText("");
         barangComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -92,7 +93,7 @@ public class PenjualanFrame extends javax.swing.JFrame {
                 {null, null, null}
             },
             new String [] {
-                " Nama", "Harga", "Jumlah"
+                " ", "", ""
             }
         ));
         jScrollPane1.setViewportView(barangTable);
@@ -166,7 +167,19 @@ public class PenjualanFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_codeTextActionPerformed
 
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
-        // TODO add your handling code here:
+        String[] data = new String[3];
+        double harga;
+        int qty = 0, jumlah = 0;
+        
+        data[0] = barang.getNamaBarang();
+        harga = barang.getHarga();
+        data[1] = String.valueOf(barang.getHarga());
+        qty = Integer.parseInt(jumlahText.getText());
+        jumlah = qty;
+        data[2] = String.valueOf(jumlah);
+        
+        penjualan.getTabel().addRow(data);
+        
     }//GEN-LAST:event_addButtonActionPerformed
 
     private void barangComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_barangComboBoxActionPerformed

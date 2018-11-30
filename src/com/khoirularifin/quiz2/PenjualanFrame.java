@@ -95,6 +95,11 @@ public class PenjualanFrame extends javax.swing.JFrame {
         });
 
         removeButton.setText("Remove");
+        removeButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                removeButtonActionPerformed(evt);
+            }
+        });
 
         barangTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -204,6 +209,10 @@ public class PenjualanFrame extends javax.swing.JFrame {
         System.out.println(dateFormat.format(date));
         codeText.setText(dateFormat.format(date) + String.format("%02d", code));
     }//GEN-LAST:event_newButtonActionPerformed
+
+    private void removeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeButtonActionPerformed
+        penjualan.getTabel().removeRow(barangTable.getSelectedRow());
+    }//GEN-LAST:event_removeButtonActionPerformed
 
     /**
      * @param args the command line arguments
